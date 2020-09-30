@@ -1,7 +1,6 @@
 import sys
-from time import time
+
 def minimum(dist,V,S):
-    # global vertices,d,Pi
     minn=sys.maxsize
     for v in range(V):
         if dist[v]<minn and S[v]==False:
@@ -10,17 +9,14 @@ def minimum(dist,V,S):
     return min_indexx
            
 def relax(u,v,d):
-    # global w,d,Pi
     if d[v]>d[u]+w[u][v]:
         d[v]=d[u]+w[u][v]
-        # Pi[v]=u
 
 def solution(d,V):
     for i in range(V):
         print(f'{i}--->{d[i]}')
     
 def Dijkstra(src,V):
-    t=time()
     d=[sys.maxsize]*V
     d[src]=0
     S=[False]*V
@@ -32,7 +28,7 @@ def Dijkstra(src,V):
             if w[u][v]>0 and S[v]==False:
                 relax(u,v,d)
     solution(d,V)
-    print(f'{time()-t}')
+   
 
 if __name__=='__main__':
     vertices=int(input('Enter No. vertices:'))
